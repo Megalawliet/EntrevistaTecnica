@@ -1,5 +1,9 @@
 package entrevista_tecnica.dao;
 
-public interface ICompanyUserDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import entrevista_tecnica.dto.CompanyUser;
+
+public interface ICompanyUserDAO extends JpaRepository<CompanyUser, Integer>{
 
 }
