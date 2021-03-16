@@ -2,6 +2,7 @@ package entrevista_tecnica.dto;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name="companyUser")//en caso que la tabala sea diferente
+@Table(name="companyuser")//en caso que la tabala sea diferente
 public class CompanyUser {
 	//Atributos
 	@Id
@@ -23,6 +24,8 @@ public class CompanyUser {
 	private int id;
 	private String username;
 	private String pwd;
+	
+	@Column(name = "userrole")//no hace falta si se llama igual
 	private String userRole;
 	
 	@OneToMany
