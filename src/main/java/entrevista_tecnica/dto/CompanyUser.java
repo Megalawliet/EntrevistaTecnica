@@ -2,15 +2,17 @@ package entrevista_tecnica.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,8 +30,7 @@ public class CompanyUser {
 	@Column(name = "userrole")//no hace falta si se llama igual
 	private String userRole;
 	
-	@OneToMany
-    @JoinColumn(name="id")
+	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
     private List<Positions> position;
 
 	public CompanyUser() {
@@ -78,7 +79,7 @@ public class CompanyUser {
 	}
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Positions")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Positions", orphanRemoval=true)
 	public List<Positions> getPosition() {
 		return position;
 	}

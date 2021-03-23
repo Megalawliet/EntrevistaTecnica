@@ -36,7 +36,7 @@ public class CandidatePositionController {
 	
 	
 	@GetMapping("/candidatePosition/{id}")
-	public CandidatePosition CandidatePositionXID(@PathVariable(name="id") int id) {
+	public CandidatePosition candidatePositionXID(@PathVariable(name="id") int id) {
 		
 		CandidatePosition CandidatePosition_xid= new CandidatePosition();
 		

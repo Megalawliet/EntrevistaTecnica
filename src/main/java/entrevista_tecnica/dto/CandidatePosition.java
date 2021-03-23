@@ -1,6 +1,7 @@
 package entrevista_tecnica.dto;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.apache.commons.lang3.time.DateUtils;
 
 
 @Entity
@@ -28,7 +31,7 @@ public class CandidatePosition {
 	Positions position;
 	
 	@Column(name = "registrydate")//no hace falta si se llama igual
-	private Timestamp registryDate;
+	private Timestamp registryDate = fecha();
 	
 	@Column(name = "testdate")//no hace falta si se llama igual
 	private Timestamp testDate;
@@ -124,6 +127,16 @@ public class CandidatePosition {
 
 	public void setResult(float result) {
 		this.result = result;
+	}
+	
+	//METODO QUE MUESTRA FECHA ACTUAL 
+	public static Timestamp fecha() {
+		java.util.Date date = new Date();
+		//añadimos una hora a GMT
+		Date newDate = DateUtils.addHours(date, 1);
+		
+		Timestamp param = new java.sql.Timestamp(newDate.getTime());
+		return param;
 	}
 
 
